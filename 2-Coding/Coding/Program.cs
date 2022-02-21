@@ -27,10 +27,11 @@ namespace Coding
                     Console.WriteLine();
                 }
                 // Get Single Array From Multidimensional Array
-                int[] singleArr = new int[multiArray.Length * multiArray[0].Length];
-                singleArr = convertMultiArrayToSingleArray(
-                    singleArr, 0, 0, multiArray.Length - 1, 0, multiArray[0].Length - 1, 0, 0, "RIGHT"
-                    );
+                // int[] singleArr = new int[multiArray.Length * multiArray[0].Length];
+                // singleArr = convertMultiArrayToSingleArray(
+                // singleArr, 0, 0, multiArray.Length - 1, 0, multiArray[0].Length - 1, 0, 0, "RIGHT"
+                // );
+                int[] singleArr = convertMultiArrayToSingleArrayV2();
                 // Get value of the Single Array
                 Console.WriteLine("Mang 1 chieu tu ma tran :");
                 for (int i = 0; i < singleArr.Length; i++)
@@ -40,7 +41,83 @@ namespace Coding
             }
             Console.ReadKey(); // stop screen
         }
+        // Convert multi array to single array
+        private static int[] convertMultiArrayToSingleArrayV2()
+        {
+            int[][] bigArr = fileToMultidimensionalArray();
+            // Check Multidimensional Array (Null if cannot read the file)
+            if (bigArr == null) return null;
+            if (bigArr.Length == 1) return bigArr[0];
+            // Field
+            int[] arrValue = new int[bigArr.Length * bigArr[0].Length];
+            int valuePosition = 0;
+            int topPosition = 0;
+            int bottomPosition = bigArr.Length - 1;
+            int leftPosition = 0;
+            int rightPosition = bigArr[0].Length - 1;
+            int rowIndexPosition = 0;
+            int itemPosition = 0;
+            string direction = "RIGHT";
+            // Start
+            while (valuePosition != arrValue.Length)
+            {
+                arrValue[valuePosition] = bigArr[rowIndexPosition][itemPosition];
+                // If Item is in top left
+                if (rowIndexPosition == topPosition && itemPosition == leftPosition && direction == "UP")
+                {
+                    itemPosition++;
+                    direction = "RIGHT";
+                }
+                // If Item is in top right
+                else if (rowIndexPosition == topPosition && itemPosition == rightPosition && direction == "RIGHT")
+                {
+                    topPosition++;
+                    rowIndexPosition++;
+                    direction = "DOWN";
+                }
+                // If Item is in bottom right
+                else if (rowIndexPosition == bottomPosition && itemPosition == rightPosition && direction == "DOWN")
+                {
+                    rightPosition--;
+                    itemPosition--;
+                    direction = "LEFT";
+                }
+                // If Item is in bottom left
+                else if (rowIndexPosition == bottomPosition && itemPosition == leftPosition && direction == "LEFT")
+                {
+                    bottomPosition--;
+                    rowIndexPosition--;
+                    direction = "UP";
+                }
+                // If Item move in top
+                else if (rowIndexPosition == topPosition && direction == "RIGHT")
+                {
+                    itemPosition++;
+                    direction = "RIGHT";
+                }
+                // If Item move in right
+                else if (itemPosition == rightPosition && direction == "DOWN")
+                {
+                    rowIndexPosition++;
+                    direction = "DOWN";
+                }
+                // If Item move in bottom
+                else if (rowIndexPosition == bottomPosition && direction == "LEFT")
+                {
+                    itemPosition--;
+                    direction = "LEFT";
+                }
+                // If Item move in left
+                else if (itemPosition == leftPosition && direction == "UP")
+                {
+                    rowIndexPosition--;
+                    direction = "UP";
+                }
 
+                valuePosition++;
+            }
+            return arrValue;
+        }
         // Convert multi array to single array
         private static int[] convertMultiArrayToSingleArray(
             int[] arrValue,

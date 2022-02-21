@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\source\\repos\\Coding\\Coding\\Coding.csproj": {}
+    "C:\\Users\\Admin\\Desktop\\InterviewQuestion\\2-Coding\\Coding\\Coding.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\source\\repos\\Coding\\Coding\\Coding.csproj": {
+    "C:\\Users\\Admin\\Desktop\\InterviewQuestion\\2-Coding\\Coding\\Coding.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\Coding\\Coding\\Coding.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\InterviewQuestion\\2-Coding\\Coding\\Coding.csproj",
         "projectName": "Coding",
-        "projectPath": "C:\\Users\\Admin\\source\\repos\\Coding\\Coding\\Coding.csproj",
+        "projectPath": "C:\\Users\\Admin\\Desktop\\InterviewQuestion\\2-Coding\\Coding\\Coding.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\source\\repos\\Coding\\Coding\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Desktop\\InterviewQuestion\\2-Coding\\Coding\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
